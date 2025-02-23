@@ -1,0 +1,25 @@
+{
+  "name": "hono-d1-drizzle",
+  "scripts": {
+    "dev": "wrangler dev --remote",
+    "deploy": "wrangler deploy --minify",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
+    "generate:seed": "tsx src/db/seed-generator.ts",
+    "db:seed:preview": "wrangler d1 execute DB_PROD --remote --preview --file=./src/db/migrations/seed.sql"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.39.3",
+    "hono": "^4.7.1"
+  },
+  "devDependencies": {
+    "@cloudflare/d1": "^1.4.1",
+    "@cloudflare/workers-types": "^4.20250109.0",
+    "@types/node": "^22.13.4",
+    "dotenv": "^16.4.7",
+    "drizzle-kit": "^0.30.4",
+    "tsx": "^4.7.1",
+    "wrangler": "^3.101.0"
+  }
+}
