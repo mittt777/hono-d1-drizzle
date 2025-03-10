@@ -87,7 +87,11 @@ app.get('/posts', async (c) => {
   const result = await db.select().from(posts).all();
   return c.json(result);
 });
-
+app.get('/postss', async (c) => {
+  const db = drizzle(c.env.DB_PROD);
+  const result = await db.query.posts.findFirst({ where: eq(schema.posts.title,"Welcome")});
+  return c.json(result);
+});
 app.get('/posts/:id', async (c) => {
   const db = drizzle(c.env.DB_PROD);
   const id = c.req.param('id');
